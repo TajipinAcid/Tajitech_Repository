@@ -6,12 +6,8 @@
     </head>
     <body>
         <form action="regist.php" method="post" enctype="multipart/form-data">
-  
-  ファイル：<br />
-        <input type="file" name="upfile" size="30" /><br />
-            <br />
-  
-    <input type="submit" value="アップロード" />
+            <input type="file" name="upfile" size="30">
+            <input type="submit" value="アップロード">
         </form>
     </body>
 </html>
