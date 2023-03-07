@@ -13,4 +13,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function() {return view('posts/form');});
+Route::get('/', function () {return view('posts/upload');});
+Route::view('upload', 'upload');
+Route::post('s3', [\App\Http\Controllers\S3Controller::class, 'uploadS3'])->name('s3');
