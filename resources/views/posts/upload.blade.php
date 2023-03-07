@@ -1,25 +1,17 @@
-<!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-<html>
-    
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-        <title>sample</title>
-    </head>
-    
-    <body>
-        <p><?php
-            if (is_uploaded_file($_FILES["upfile"]["tmp_name"])) {
-                if (move_uploaded_file($_FILES["upfile"]["tmp_name"], "files/" . $_FILES["upfile"]["name"])) {
-                    chmod("files/" . $_FILES["upfile"]["name"], 0644);
-                    echo $_FILES["upfile"]["name"] . "をアップロードしました。";
-                } else {
-                    echo "ファイルをアップロードできません。";
-                }
-                } else {
-                    echo "ファイルが選択されていません。";
-                }
-            ?></p>
-    </body>
-
+<!doctype html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>ファイルアップロード</title>
+</head>
+<body>
+    <form action="{{ route('s3') }}" method="post" enctype="multipart/form-data">
+        @csrf
+        <input type="file" name="file" id="">
+        <input type="submit" value="アップロード">
+    </form>
+</body>
 </html>
