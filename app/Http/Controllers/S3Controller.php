@@ -10,18 +10,17 @@ class S3Controller extends Controller
     
     // S3へのファイルアップロード
     public function uploadS3(Request $request)
-    {
+    {//dd($request);
         // バリデーション
         $request->validate(
             [
-                'file' => 'required|file',
+                'audio' => 'required|mimes:mp3,mpeg',
             ]
         );
         //dd($request);
-
         // S3へファイルをアップロード
-        $result = Storage::disk('s3')->putFile('/', $request->file('file'));
-
+        $result = Storage::disk('s3')->putFile('/', $request->file('audio'));
+       
         // アップロードの成功判定
         if ($result) {
             return 'アップロード成功';
